@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paloma & Fernando - Nossa História</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #607c6b;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #607c6b;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        
+        .story-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(96, 124, 107, 0.15);
+            border: 1px solid rgba(96, 124, 107, 0.2);
+        }
+        
+        .story-content {
+            position: absolute;
+            width: 100%;
+            padding-right: 2rem;
+            animation: scroll 90s linear forwards;
+        }
+        
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+        
+        .highlight {
+            color: #607c6b;
+            font-weight: 500;
+        }
+        
+        .heart {
+            color: #607c6b;
+            display: inline-block;
+            animation: heartbeat 2s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.1); }
+            10% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        
+        .impact-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            background: linear-gradient(135deg, #607c6b, #4a6355);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(96, 124, 107, 0.3);
+            animation: fadeIn 2s ease-in-out 90s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .impact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .impact-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #607c6b;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(96, 124, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            background: #4a6355;
+            transform: scale(1.1);
+        }
+        
+        .floating-symbols {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .love-symbol {
+            position: absolute;
+            color: #607c6b;
+            font-size: 1.5rem;
+            opacity: 0.5;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 1rem;
+            color: #607c6b;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .restart-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: #607c6b;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .restart-button:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .story-container {
+                padding: 1.5rem;
+            }
+            
+            .story-text {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .impact-title {
+                font-size: 1.8rem;
+            }
+            
+            .impact-text {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .story-container {
+                padding: 1rem;
+            }
+            
+            .impact-message {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho com título -->
+        <div class="header">
+            <h1 class="title">Paloma & Fernando</h1>
+            <p class="subtitle">Uma história de amor eterno</p>
+        </div>
+        
+        <!-- Container da história com rolagem automática -->
+        <div class="story-container">
+            <div class="story-content" id="storyContent">
+                <div class="story-text">
+                    <p>Tudo começou em 2010, no autocarro Museu–Magoanine, quando um simples olhar despertou uma certeza: ali nascia uma história de amor.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>Entre conversas no mig33 e encontros tímidos, o destino se encarregou de unir dois corações.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>Vieram os desafios, a cumplicidade e a profecia de que um dia formaríamos uma família.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>Em 2014, o passo de coragem confirmou o sentimento, e desde então seguimos firmes, enfrentando cada batalha com fé, apoio e amor.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>Com a chegada de <span class="highlight">Anaires</span> em 2018, e de <span class="highlight">Aloma</span> em 2022, a nossa vida ganhou novos significados.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>Em 2023, construímos o nosso lar, sem esquecer as origens nem aqueles que acreditaram no nosso amor.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>Acreditar é ter a certeza de que o amor é o essencial.</p>
+                </div>
+                
+                <div class="story-text">
+                    <p>E é com esse amor que damos mais um passo, dizendo o "sim" em viva voz — para que o mundo saiba que o amor que nos uniu ainda existe. <span class="heart">💍</span></p>
+                </div>
+            </div>
+            
+            <!-- Mensagem de impacto que aparece após a rolagem -->
+            <div class="impact-message" id="impactMessage">
+                <h2 class="impact-title">E Assim Começa Uma Nova Jornada</h2>
+                <p class="impact-text">Esta história que contamos é apenas o prólogo de uma vida inteira que ainda vamos escrever juntos. Cada capítulo que virá será ainda mais bonito, mais forte e mais cheio de amor do que o anterior.</p>
+                <p class="impact-text">O nosso "sim" não é um ponto final, mas um convite para uma eternidade de descobertas, crescimento e felicidade compartilhada.</p>
+                <button class="restart-button" id="restartButton">Reviver Nossa História</button>
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+        <div class="footer">
+            <p>Com amor, para todos que fizeram parte dessa jornada</p>
+        </div>
+        
+        <!-- Controle de música -->
+        <div class="music-control" id="musicControl">
+            <i class="fas fa-pause" id="musicIcon"></i>
+        </div>
+        
+        <!-- Partículas de símbolos de amor - reduzidas -->
+        <div class="floating-symbols" id="floatingSymbols"></div>
+    </div>
+    
+    <!-- Áudio -->
+    <audio id="bgMusic" loop>
+        <source src="Instrumental-Hub-John-legend-All-of-me--Karaoke-Instrumental.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Inicializar música
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+        const bgMusic = document.getElementById('bgMusic');
+        const storyContent = document.getElementById('storyContent');
+        const impactMessage = document.getElementById('impactMessage');
+        const restartButton = document.getElementById('restartButton');
+        let playing = false;
+        
+        // Configurar volume e pular os primeiros 5 segundos
+        bgMusic.volume = 0.3;
+        bgMusic.currentTime = 5; // Pular os primeiros 5 segundos
+        
+        // Símbolos de amor e casamento - reduzidos para apenas 3 ícones
+        const loveSymbols = [
+            '<i class="fas fa-heart"></i>', 
+            '<i class="fas fa-ring"></i>', 
+            '💍'
+        ];
+        
+        // Reproduzir automaticamente (com tratamento de erro)
+        window.addEventListener('load', function() {
+            // Tentar reproduzir automaticamente
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    playing = true;
+                    musicIcon.className = 'fas fa-pause';
+                }).catch(error => {
+                    console.log('Reprodução automática impedida. O usuário precisa interagir primeiro.');
+                    musicControl.style.display = 'flex';
+                });
+            }
+        });
+        
+        // Controle manual de música
+        musicControl.addEventListener('click', () => {
+            if (!playing) {
+                bgMusic.play();
+                musicIcon.className = 'fas fa-pause';
+            } else {
+                bgMusic.pause();
+                musicIcon.className = 'fas fa-music';
+            }
+            playing = !playing;
+        });
+        
+        // Criar símbolos de amor flutuantes - reduzidos
+        const floatingSymbols = document.getElementById('floatingSymbols');
+        
+        function createLoveSymbol() {
+            const symbol = document.createElement('div');
+            symbol.className = 'love-symbol';
+            symbol.innerHTML = loveSymbols[Math.floor(Math.random() * loveSymbols.length)];
+            symbol.style.left = Math.random() * 100 + 'vw';
+            symbol.style.animationDuration = (20 + Math.random() * 10) + 's';
+            symbol.style.fontSize = (1.2 + Math.random() * 0.8) + 'rem';
+            symbol.style.opacity = (0.3 + Math.random() * 0.3);
+            floatingSymbols.appendChild(symbol);
+            
+            // Remover após a animação
+            setTimeout(() => {
+                symbol.remove();
+            }, 25000);
+        }
+        
+        // Criar símbolos em intervalos mais espaçados - reduzido para 1 a cada 3 segundos
+        setInterval(createLoveSymbol, 3000);
+        
+        // Criar apenas 3 símbolos iniciais
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createLoveSymbol, i * 1000);
+        }
+        
+        // Pausar a animação de rolagem quando o mouse estiver sobre o texto
+        storyContent.addEventListener('mouseenter', () => {
+            storyContent.style.animationPlayState = 'paused';
+        });
+        
+        storyContent.addEventListener('mouseleave', () => {
+            storyContent.style.animationPlayState = 'running';
+        });
+        
+        // Botão para reiniciar a história
+        restartButton.addEventListener('click', () => {
+            // Reiniciar animação
+            storyContent.style.animation = 'none';
+            void storyContent.offsetWidth; // Trigger reflow
+            storyContent.style.animation = 'scroll 90s linear forwards';
+            
+            // Esconder mensagem de impacto
+            impactMessage.style.opacity = '0';
+            impactMessage.style.transform = 'translateY(20px)';
+            
+            // Mostrar novamente após 90 segundos
+            setTimeout(() => {
+                impactMessage.style.animation = 'fadeIn 2s ease-in-out forwards';
+            }, 90000);
+        });
+        
+        // Mostrar mensagem de impacto após a rolagem completa
+        setTimeout(() => {
+            impactMessage.style.animation = 'fadeIn 2s ease-in-out forwards';
+        }, 90000);
+    </script>
+</body>
+</html>
