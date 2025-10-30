@@ -6,7 +6,7 @@
     <title>Paloma & Fernando - Nossa História</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -74,22 +74,54 @@
             animation: scroll 90s linear forwards;
         }
         
-        .story-text {
+        .story-chapter {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(96, 124, 107, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #607c6b;
+            transition: transform 0.3s ease;
+        }
+        
+        .story-chapter:hover {
+            transform: translateX(5px);
+            background: rgba(96, 124, 107, 0.08);
+        }
+        
+        .chapter-year {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #607c6b;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #4a6355;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .chapter-text {
             font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            line-height: 1.7;
             color: #444;
+            margin-bottom: 1rem;
         }
         
         .highlight {
             color: #607c6b;
-            font-weight: 500;
+            font-weight: 600;
+            font-style: italic;
         }
         
         .heart {
             color: #607c6b;
             display: inline-block;
             animation: heartbeat 2s infinite;
+            margin: 0 5px;
         }
         
         @keyframes heartbeat {
@@ -229,6 +261,93 @@
             transform: translateY(-2px);
         }
         
+        /* Nova seção de FAQ */
+        .faq-section {
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(96, 124, 107, 0.1);
+            border: 1px solid rgba(96, 124, 107, 0.1);
+        }
+        
+        .faq-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #607c6b;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .faq-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #607c6b;
+            margin: 0.5rem auto;
+            opacity: 0.5;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(96, 124, 107, 0.2);
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #607c6b;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f0f3f5;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: white;
+        }
+        
+        .faq-answer-content {
+            padding: 1.5rem;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .dress-code-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #607c6b;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
         /* Responsividade */
         @media (max-width: 768px) {
             .title {
@@ -243,7 +362,19 @@
                 padding: 1.5rem;
             }
             
-            .story-text {
+            .story-chapter {
+                padding: 1rem;
+            }
+            
+            .chapter-year {
+                font-size: 1.7rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.2rem;
+            }
+            
+            .chapter-text {
                 font-size: 1rem;
             }
             
@@ -257,6 +388,14 @@
             
             .impact-text {
                 font-size: 1rem;
+            }
+            
+            .faq-section {
+                padding: 1rem;
+            }
+            
+            .faq-title {
+                font-size: 1.5rem;
             }
         }
         
@@ -272,6 +411,15 @@
             .impact-message {
                 padding: 2rem 1rem;
             }
+            
+            .faq-question {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .faq-answer-content {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -286,36 +434,101 @@
         <!-- Container da história com rolagem automática -->
         <div class="story-container">
             <div class="story-content" id="storyContent">
-                <div class="story-text">
-                    <p>Tudo começou em 2010, no autocarro Museu–Magoanine, quando um simples olhar despertou uma certeza: ali nascia uma história de amor.</p>
+                <!-- Capítulo 1: O Encontro -->
+                <div class="story-chapter">
+                    <span class="chapter-year">2010</span>
+                    <h3 class="chapter-title">O Encontro que Mudou Tudo</h3>
+                    <p class="chapter-text">Tudo começou no autocarro Museu–Magoanine, quando um simples olhar despertou uma certeza: ali nascia uma história de amor.</p>
+                    <p class="chapter-text">Um encontro casual que o destino transformou em algo eterno, um momento que marcaria o início da nossa jornada juntos.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>Entre conversas no mig33 e encontros tímidos, o destino se encarregou de unir dois corações.</p>
+                <!-- Capítulo 2: As Primeiras Conversas -->
+                <div class="story-chapter">
+                    <span class="chapter-year">Tempo de Descoberta</span>
+                    <h3 class="chapter-title">Conversas que Conquistaram Corações</h3>
+                    <p class="chapter-text">Entre conversas no mig33 e encontros tímidos, o destino se encarregou de unir dois corações.</p>
+                    <p class="chapter-text">Cada mensagem trocada era um passo em direção ao nosso futuro, cada palavra um fio tecendo o nosso amor.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>Vieram os desafios, a cumplicidade e a profecia de que um dia formaríamos uma família.</p>
+                <!-- Capítulo 3: Desafios -->
+                <div class="story-chapter">
+                    <span class="chapter-year">Desafios Superados</span>
+                    <h3 class="chapter-title">Forjados no Fogo das Dificuldades</h3>
+                    <p class="chapter-text">Vieram os desafios, a cumplicidade e a profecia de que um dia formaríamos uma família.</p>
+                    <p class="chapter-text">Aprendemos que o amor verdadeiro supera qualquer obstáculo, e que juntos éramos mais fortes que qualquer tempestade.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>Em 2014, o passo de coragem confirmou o sentimento, e desde então seguimos firmes, enfrentando cada batalha com fé, apoio e amor.</p>
+                <!-- Capítulo 4: O Compromisso -->
+                <div class="story-chapter">
+                    <span class="chapter-year">2014</span>
+                    <h3 class="chapter-title">O Ano do Nosso Compromisso</h3>
+                    <p class="chapter-text">O passo de coragem confirmou o sentimento, e desde então seguimos firmes, enfrentando cada batalha com fé, apoio e amor.</p>
+                    <p class="chapter-text">O nosso compromisso tornou-se a base de tudo que construiríamos juntos, o alicerce da nossa família.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>Com a chegada de <span class="highlight">Anaires</span> em 2018, e de <span class="highlight">Aloma</span> em 2022, a nossa vida ganhou novos significados.</p>
+                <!-- Capítulo 5: As Nossas Filhas -->
+                <div class="story-chapter">
+                    <span class="chapter-year">Nossas Bênçãos</span>
+                    <h3 class="chapter-title">O Amor Multiplicado</h3>
+                    <p class="chapter-text">Com a chegada da <span class="highlight">Anaires</span> em 2018, e da <span class="highlight">Aloma</span> em 2022, a nossa vida ganhou novos significados.</p>
+                    <p class="chapter-text">Cada filha trouxe uma dimensão nova ao nosso amor, tornando-o mais profundo, mais completo e infinitamente mais bonito.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>Em 2023, construímos o nosso lar, sem esquecer as origens nem aqueles que acreditaram no nosso amor.</p>
+                <!-- Capítulo 6: Nosso Lar -->
+                <div class="story-chapter">
+                    <span class="chapter-year">2023</span>
+                    <h3 class="chapter-title">O Lar que Sonhámos</h3>
+                    <p class="chapter-text">Construímos o nosso lar, sem esquecer as origens nem aqueles que acreditaram no nosso amor.</p>
+                    <p class="chapter-text">Um espaço nosso, onde cada canto conta uma parte da nossa história, cada objeto guarda uma memória preciosa.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>Acreditar é ter a certeza de que o amor é o essencial.</p>
+                <!-- Capítulo 7: Nossa Fé -->
+                <div class="story-chapter">
+                    <span class="chapter-year">Nossa Fé</span>
+                    <h3 class="chapter-title">A Certeza do que é Essencial</h3>
+                    <p class="chapter-text">Acreditar é ter a certeza de que o amor é o essencial.</p>
+                    <p class="chapter-text">E que juntos podemos enfrentar qualquer desafio que a vida nos apresentar, porque o nosso amor é a nossa maior força.</p>
                 </div>
                 
-                <div class="story-text">
-                    <p>E é com esse amor que damos mais um passo, dizendo o "sim" em viva voz — para que o mundo saiba que o amor que nos uniu ainda existe. <span class="heart">💍</span></p>
+                <!-- Capítulo 8: O Nosso Sim -->
+                <div class="story-chapter">
+                    <span class="chapter-year">O Nosso Sim</span>
+                    <h3 class="chapter-title">Uma Nova Jornada de Amor</h3>
+                    <p class="chapter-text">E é com esse amor que damos mais um passo, dizendo o "sim" em viva voz <span class="heart">❤️</span> — para que o mundo saiba que o amor que nos uniu ainda existe e continuará a crescer.</p>
+                    <p class="chapter-text">Um compromisso renovado para uma vida inteira de felicidade, descobertas e amor incondicional.</p>
+                </div>
+                
+                <!-- Seção de FAQ -->
+                <div class="faq-section">
+                    <h2 class="faq-title">Perguntas Frequentes</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span><span class="dress-code-icon"><i class="fas fa-tshirt"></i></span> O que devo vestir?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Pedimos que os convidados venham com roupas formais, alinhando ao tom elegante da cerimônia e recepção.</p>
+                                <p>Para os homens, o uso de fato é obrigatório, mas pedimos que evitem combinar com sapatilhas. As mulheres também devem optar por roupas formais para manter a harmonia e sofisticação do evento.</p>
+                                <p>Queremos que todos estejam confortáveis e com um visual à altura dessa celebração especial.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span><span class="dress-code-icon"><i class="fas fa-shoe-prints"></i></span> Que tipo de calçado devo usar ou evitar?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Pedimos que os homens usem sapatos formais que combinem com o fato, evitando quaisquer sapatilhas ou calçados casuais.</p>
+                                <p>Para as mulheres, recomendamos sapatos elegantes que complementem o traje formal. O objetivo é manter a harmonia e sofisticação da celebração, garantindo que todos estejam adequadamente vestidos para a ocasião especial.</p>
+                                <p>Entendemos que sapatos altos podem ser cansativos, por isso pedimos que as mulheres, ao se sentirem desconfortáveis, evitem andar descalças no salão e tragam chinelos para usarem nos momentos em que desejarem relaxar os pés, mantendo a elegância com conforto.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -338,13 +551,15 @@
             <i class="fas fa-pause" id="musicIcon"></i>
         </div>
         
-        <!-- Partículas de símbolos de amor - reduzidas -->
+        <!-- Partículas de símbolos de amor -->
         <div class="floating-symbols" id="floatingSymbols"></div>
     </div>
     
     <!-- Áudio -->
     <audio id="bgMusic" loop>
-        <source src="Instrumental-Hub-John-legend-All-of-me--Karaoke-Instrumental.mp3" type="audio/mpeg">
+        <!-- Substitua pelo seu arquivo de música real -->
+        <source src="1029.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
     </audio>
 
     <script>
@@ -361,11 +576,11 @@
         bgMusic.volume = 0.3;
         bgMusic.currentTime = 5; // Pular os primeiros 5 segundos
         
-        // Símbolos de amor e casamento - reduzidos para apenas 3 ícones
+        // Símbolos de amor e casamento
         const loveSymbols = [
             '<i class="fas fa-heart"></i>', 
             '<i class="fas fa-ring"></i>', 
-            '💍'
+            '💍', '❤️', '✨'
         ];
         
         // Reproduzir automaticamente (com tratamento de erro)
@@ -396,7 +611,7 @@
             playing = !playing;
         });
         
-        // Criar símbolos de amor flutuantes - reduzidos
+        // Criar símbolos de amor flutuantes
         const floatingSymbols = document.getElementById('floatingSymbols');
         
         function createLoveSymbol() {
@@ -415,10 +630,10 @@
             }, 25000);
         }
         
-        // Criar símbolos em intervalos mais espaçados - reduzido para 1 a cada 3 segundos
+        // Criar símbolos em intervalos
         setInterval(createLoveSymbol, 3000);
         
-        // Criar apenas 3 símbolos iniciais
+        // Criar símbolos iniciais
         for (let i = 0; i < 3; i++) {
             setTimeout(createLoveSymbol, i * 1000);
         }
@@ -453,6 +668,25 @@
         setTimeout(() => {
             impactMessage.style.animation = 'fadeIn 2s ease-in-out forwards';
         }, 90000);
+        
+        // Funcionalidade do FAQ - Accordion (AGORA FUNCIONANDO)
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Fechar todos os outros itens
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Alternar o item atual
+                item.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
